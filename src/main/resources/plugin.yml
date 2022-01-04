@@ -1,0 +1,96 @@
+main: com.jellyblade.xpfont.XpFont
+name: XPFont
+version: 1.0.7
+api-version: 1.16
+commands:
+  xpcheck:
+    description: Remotely check the amount of xp stored in your XP Font.
+    usage: "Usage: /<command> [optional: username]"
+    aliases: [xpfontcheck, checkxp, chkxp, xpfont, xpcheck, xpchk]
+  xpdeposit:
+    description: "Remotely deposit xp into your xp font. Leaving # of levels blank will deposit all xp available."
+    usage: "Usage: /<command> [optional: xp levels]"
+    aliases: [xpfontdeposit, depositxp, dxp, fontdeposit, storexp, xpstore, xpd, xpdeposit]
+  xpwithdraw:
+    description: "Remotely withdraw xp from your xp font. Leaving # of levels blank will withdraw all xp available."
+    usage: "Usage: /<command> [optional: xp levels]"
+    aliases: [xpfontwithdraw, withdrawxp, fontwithdraw, withxp, wxp, xpwith, xpwithdraw]
+  xpadd:
+    description: "Adds/removes xp to the specified users' XP Font. Use negative numbers or 'remove|sub' aliases to remove xp."
+    usage: "Usage: /<command> <username> <xp points>"
+    aliases: [xpfontadd, addxp, xpfontchange, changexp, xpchange, removexp, xpremove, xpsub, subxp]
+  xpset:
+    description: "Sets a user's stored xp in their xp font to the specified value."
+    usage: "Usage: /<command> <username> <xp points>"
+    aliases: [xpfontset, setxp, fontset]
+  xpmigrate:
+    description: "Migrates the XP Font data storage to a new type."
+    usage: "Usage: /<command> [yaml | serialized | sql]"
+    aliases: [xpfontmigrate, migratexp]
+permissions:
+    xpfont.*:
+      description: Shorthand for all user permissions, such as creating new fonts, and depositing/withdrawing experience.
+      default: true
+      children:
+        xpfont.create: true
+        xpfont.destroy: true
+        xpfont.deposit: true
+        xpfont.withdraw: true
+        xpfont.check: true
+        xpfont.register: true
+    xpfont.create:
+      description: Allows a user to create a new XP Font (does not prevent them from accessing an existing font).
+      default: true
+    xpfont.destroy:
+      description: Allows a user to destroy (unbind) XP Fonts. Does not prevent users from simply mining the block with a pick. 
+      default: true
+    xpfont.deposit:
+      description: Allows a user to store XP into a font.
+      default: true
+    xpfont.withdraw:
+      description: Allows a user to retrieve stored XP from a font.
+      default: true
+    xpfont.check:
+      description: Allows a user to check their XP Font's information.
+      default: true
+    xpfont.register:
+      description: Allows a user to create their XP Font data for saving/storing.
+      default: true
+    xpfont.remote.*:
+      description: Shorthand for all commands to remotely access XP font storage instead of requiring a physical font block.
+      default: false
+      children:
+        xpfont.remote.check: true
+        xpfont.remote.deposit: true
+        xpfont.remote.withdraw: true
+    xpfont.remote.check:
+      description: Allows a user to check their XP Font's information remotely with the '/xpfont' or '/xpfont [check|info|stats|amount]' command(s).
+      default: false
+    xpfont.remote.check.others:
+      description: Allows a user to check another user's stored XP inside of their XP font with the /xpfont [check|info|stats|amount] command.
+      default: op
+    xpfont.remote.deposit:
+      description: Allows usage of the '/xpfont deposit' command to deposit xp into their font without requiring a physical font block.
+      default: false
+    xpfont.remote.withdraw:
+      description: Allows usage of the '/xpfont withdraw' command to withdraw xp from their font without requiring a physical font block.
+      default: false
+    xpfont.admin.*:
+      description: Shorthand for all admin permissions.
+      default: op
+      children:
+        xpfont.admin.addxp: true
+        xpfont.admin.setxp: true
+        xpfont.admin.migrate: true
+    xpfont.admin.addxp:
+      description: Allows a user to modify other people's XP fonts to add a specific amount of xp.
+      default: op
+    xpfont.admin.setxp:
+      description: Allows a user to modify other people's XP font to set its xp to a specified value.
+      default: op
+    xpfont.admin.migrate:
+      description: Allows a user to migrate the data storage to another type.
+      default: op
+    
+
+      

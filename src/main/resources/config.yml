@@ -1,0 +1,27 @@
+# XP Font Configuration
+
+# Setting this to false will disable all information display (not recommended).
+messages-enabled: true
+# Specify how most messages will be sent to users. You can set this to either ACTION_BAR or CHAT.
+# Remote XP Font access and admin commands will always use CHAT.
+message-type: ACTION_BAR
+
+# Setting this to false will disable all user commands, but still allow block-based XP font functionality.
+# This will not disable admin commands!
+commands-enabled: true
+# Setting this to false will disable block-based fonts, making this plugin entirely command-based.
+xp-font-enabled: true
+
+# These two options use spigot materials to allow you to change the block and activation item used for XP Font's physical blocks. 
+# See: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html for a full list of materials.
+
+# The block used for the XP Font.
+xp-font-block: EMERALD_BLOCK
+# The item used to activate/deactivate the XP Font by right-clicking on it.
+xp-font-activation-item: BOOK
+
+# Sets the way to store XP data. Options: [YAML | SERIALIZED | SQL]
+# YAML uses fontblocks.yml and playerfonts.yml. Directly editable.
+# SERIALIZED uses a custom .xpfont format for both fontblock and playerxp storage. Not editable.
+# SQL will be added in a later update. Setting this to SQL will use YAML for the time being.
+data-storage-type: YAML
